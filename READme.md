@@ -1,27 +1,48 @@
-# Django and MySQL on Docker
+# Warehouse Management System using MySQL, Django, and Docker.
 
-## Installation for dev
+## Overview
 
-1. Copy `.env.dev.exemple` to `.env.dev` and edit values.
+This project is about a warehouse management system. The application allows the warehouse to create and manage user accounts 
+with different levels of access and permissions. A warehouse manager should have access to all features and the operator should only have access to the outbound and inbound workflow.
+
+
+## Getting Started
+
+### Prerequisites
+
+These are the requirements for the project.
+
+- asgiref==3.5.2
+- Django==4.1.3
+- mysqlclient==2.1.1
+- sqlparse==0.4.3
+- tzdata==2022.7
+
+### Installation
+
+Provide step-by-step instructions on how to install and set up your project.
 
 ```bash
-DEBUG=1
-SECRET_KEY=generate-key-here    # CHANGE THIS
-DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 0.0.0.0 [::1]      
-DATABASE=mysql
-SQL_ENGINE=django.db.backends.mysql
-SQL_PORT=3306
-SQL_DATABASE=mydb               # name of the database
-SQL_ROOT_PASSWORD=rootpassword  # CHANGE THIS
-SQL_USER=myuser                 # do not use 'root'
-SQL_PASSWORD=myuserpassword     # CHANGE THIS
-SQL_HOST=db
-```
+# Clone the repository
+git clone https://github.com/tarunakugan18/django-mysql-docker.git
 
-2. Run `docker compose --env-file .env.dev up --build`
+# Navigate to the project directory
+cd django-mysql-docker
 
-3. Create superuser : `docker exec -it django-web python manage.py createsuperuser`
+# Create a virtual environment
+python -m venv venv
 
-4. Visit `http://localhost:8000` or `http://localhost:8000/admin`
+# Activate the virtual environment
+# On Windows
+venv\Scripts\activate
+# On macOS/Linux
+source venv/bin/activate
 
-![](https://i.imgur.com/Ty9B6xa.png)
+# Install dependencies
+pip install -r requirements.txt
+
+# Apply migrations
+python manage.py migrate
+
+# Run the development server
+python manage.py runserver

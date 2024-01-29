@@ -1,0 +1,45 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Python runtime
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# SQLite database files
+*.sqlite3
+
+# Logs
+*.log
+
+# Ignore migrations
+**/migrations/
+
+# Ignore sensitive information
+*.env
+
+# Ignore user-specific files
+*.DS_Store
+Thumbs.db
+
+# Ignore local settings
+local_settings.py
+
+# Ignore Docker related files
+docker-compose.override.yml
+.docker/
+.dockerignore
+
+# Ignore database backup files
+*.bak
+*.sql
