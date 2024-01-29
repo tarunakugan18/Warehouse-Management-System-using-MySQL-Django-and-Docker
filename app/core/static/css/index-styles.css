@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    --ff-title: "Montserrat", sans-serif;
+    --ff-body: "Roboto", sans-serif;
+    --primary-color: #3023ae;
+    --secondary-color: #f09;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ff-body);
+    background: rgb(238, 244, 253);
+    font-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ff-title);
+}
+
+.whole-section {
+    width: 100%;
+    height: 100%;
+}
+
+.whole-section__background {
+    height: 100vh;
+    width: 100%;
+    background: url("../img/background.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    object-fit: cover;
+    position: relative;
+}
+
+.login-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container__outside-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 35%;
+    min-height: 50%;
+    width: 35%;
+    height: 50%;
+    background-color: white;
+    border-radius: 0.625em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 1em;
+}
+
+.login-container__header-container {
+    width: 100%;
+    text-align: center;
+    font-size: 1.15vw;
+    margin-bottom: 1em;
+}
+
+.login-container__input-form {
+    width: 100%;
+    border-left: 1px solid #969090;
+    padding-left: 0.625em;
+}
+
+.input-form-user-id input,
+.input-form-user-password input,
+.input-form-user-type select {
+    box-sizing: border-box;
+    padding: 0.55em 0.85em;
+    width: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.input-form-user-id p,
+.input-form-user-password p,
+.input-form-user-type p {
+    margin-bottom: 0.25em;
+}
+
+.input-form-user-id *,
+.input-form-user-password *,
+.input-form-user-type * {
+    font-size: 1vw;
+}
+
+.user-id-container *,
+.user-password-container *,
+.user-type-container * {
+    display: inline-block;
+}
+
+#user-id-error,
+#user-password-error,
+#user-type-error {
+    color: red;
+    font-size: 0.75rem;
+}
+
+.mandatory-field-symbol {
+    margin-left: 3px;
+    color: red;
+}
+
+.input-form-user-id input,
+.input-form-user-password input {
+    border: none;
+    border-radius: 0.625em;
+    border: 2px solid grey;
+}
+
+.input-form-user-type select {
+    border: none;
+    border-radius: 0.625em;
+    border: 2px solid grey;
+}
+
+.input-form-user-id input:focus,
+.input-form-user-password input:focus {
+    border: none;
+    outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--secondary-color);
+}
+
+.input-form-user-type select:focus {
+    border: none;
+    outline: none;
+    border: 2px solid var(--secondary-color);
+}
+
+.input-form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+.input-form-button button {
+    padding: 1em 3em;
+    border-radius: 0.625em;
+    border: none;
+    outline: none;
+    background-color: #a4508b;
+    background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+    color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-size: 1vw;
+    
+}
+
+.input-form-button button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.input-form-button button:disabled {
+    opacity: 1;
+    cursor: default;
+    background-color: #e7eff9;
+    background-image: linear-gradient(315deg, #7a7e83 0%, #a9aaae 74%);
+    color: white;
+}
+
+.input-form-register-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-form-register-link p {
+    font-size: 0.85vw;
+}
+
+.login-container-headers__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container-headers__img img {
+    width: 10vw;
+}
+
+#user-type {
+    border: 2px solid green;
+}
+
+/* Notification CSS */
+
+.error-message {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    width: 20vw;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    font-size: 1vw;
+    transition: transform 0.2s;
+    user-select: none;
+    /* Chrome, Safari, Opera */
+    -webkit-animation-name: notification-animation;
+    -webkit-animation-duration: 2s;
+    /* Standard syntax */
+    animation-name: notification-animation;
+    animation-duration: 2s;
+}
+
+@keyframes notification-animation {
+    25% {
+        transform: translateX(0);
+    }
+
+    60% {
+        transform: translateX(-4em);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@-webkit-keyframes notification-animation {
+    25% {
+        transform: translateX(0);
+    }
+
+    60% {
+        transform: translateX(-4em);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+
+/* For Tiny Screens */
+@media screen and (max-width: 80rem) {
+
+    .input-form-user-id *,
+    .input-form-user-password *,
+    .input-form-user-type * {
+        font-size: 1.25vw;
+    }
+
+    .input-form-button button {
+        font-size: 1.25vw;
+    }
+
+    .input-form-register-link p {
+        font-size: 1.25vw;
+    }
+
+    .error-message {
+        width: 25vw;
+        font-size: 1.15vw;
+    }
+
+    .login-container__outside-container {
+        display: block;
+    }
+
+    .login-container-headers {
+        display: none;
+    }
+
+    .login-container__input-form {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .login-container__outside-container {
+        height: auto;
+    }
+}

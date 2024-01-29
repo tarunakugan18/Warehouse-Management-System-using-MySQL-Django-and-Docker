@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/manage-suppliers-styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static '/img/company-logo.ico' %}">
+    <title>Warehouse Manager | Manage Suppliers</title>
+    <!-- Link to Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body onload="loadPage();">
+    <!-- Top navigation bar -->
+    <nav class="navigation-bar" id="navigation-bar">
+        <div class="hamburger-icon" id="hamburger-icon" onclick="manageNavigationBar();">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="logo">
+            <a href="">
+                <img src="{% static '/img/logo.jpg' %}" alt="Logo">
+            </a>
+        </div>
+        <div class="header">
+            <a href="">
+                <h3>Warehouse Management System</h3>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Side navigation bar -->
+    <div id="side-navigation-bar" class="side-navigation-bar">
+        <div class="user-data-outer-container">
+            <div class="user-photo">
+                <img src="{% static '/img/avatar-logo.png' %}" alt="User Photo">
+            </div>
+            <div class="user-data-container">
+                <div class="user-name">
+                    <p>{{ user.name }} ({{ user.user_type }})</p>
+                </div>
+                <div class="user-online-status-container">
+                    <div class="user-online-status"></div>
+                    <div class="user-online">Online</div>
+                </div>
+            </div>
+        </div>
+
+    {% if user.user_type == "Warehouse Manager" %}
+        <a href="{% url 'inbounds' %}">
+            <i class="fa fa-mail-forward"></i>Manage Inbounds
+        </a>
+        <a href="{% url 'outbounds' %}">
+            <i class="fa fa-mail-reply"></i>Manage Outbounds
+        </a>
+        <a href="{% url 'products' %}">
+            <i class="fa fa-cart-plus"></i>Manage Products
+        </a>
+        <a href="{% url 'suppliers' %}" id="navigation-bar-active">
+            <i class="fa fa-users"></i>Manage Suppliers
+        </a>
+        <a href="{% url 'customers' %}">
+            <i class="fa fa-users"></i>Manage Customers
+        </a>
+        <a href="{% url 'operators' %}">
+            <i class="fa fa-user"></i>Manage Operators
+        </a>
+        <a href="{% url 'user_logout' %}">
+            <i class="fa fa-share-square-o"></i>Logout
+        </a>
+    {% else %}
+        <a href="{% url 'inbounds' %}" id="navigation-bar-active">
+            <i class="fa fa-mail-forward"></i>Manage Inbounds
+        </a>
+        <a href="{% url 'outbounds' %}">
+            <i class="fa fa-mail-reply"></i>Manage Outbounds
+        </a>
+        <a href="{% url 'user_logout' %}">
+            <i class="fa fa-share-square-o"></i>Logout
+        </a>
+    {% endif %}
+    </div>
+
+    <!-- Main content -->
+    <div id="main-content">
+        <div class="main-content__entire-section">
+            <div id="message-container">
+                {% if error %}
+                    <div>{{ error }}</div>
+                {% endif %}
+            </div>
+            <div class="manage-suppliers-data-header">
+                <div class="manage-suppliers-data-header-inner-container">
+                    <h2>Manage Supplier Data</h2>
+                </div>
+                <div class="add-btn-container" id="add-btn-container">
+                    <button class="add-btn" id="add-btn"><i class="fa fa-plus"></i> Add New Supplier</button>
+                </div>
+            </div>
+            <div class="all-suppliers-data-container">
+                <div id="table-filter-input-container" class="table-filter-input-container">
+                    <label for="table-filter-input">Search:</label>
+                    <input type="text" onkeyup="filterTable();" id="table-filter-input" placeholder="Type to search">
+                </div>
+
+                <table id='suppliers-table'>
+                    <tr>
+                        <thead>
+                            <th data-sort="supplier_id">Supplier ID <i class="fa fa-sort"></i></th>
+                            <th data-sort="name">Name <i class="fa fa-sort"></i></th>
+                            <th data-sort="email">Email <i class="fa fa-sort"></i></th>
+                            <th>Actions</th>
+                        </thead>
+                    </tr>
+                    <tr>
+                        <tbody id="suppliers-table-tbody"></tbody>
+                    </tr>
+                </table>
+                <div class="manage-buttons-container" id="manage-buttons-container">
+                    <button type="button" id="previous-btn">Previous</button>
+                    <button type="button" id="next-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="manage-suppliers-modal" class="manage-suppliers-modal">
+        <div class="manage-suppliers-data-modal-content" id="manage-suppliers-data-modal-content">
+            <div class="manage-suppliers-data-modal-header-container">
+                <div class="manage-suppliers-data-modal-header">
+                    <h2>Suppliers Data</h2>
+                </div>
+                <div class="manage-suppliers-data-modal-close-btn-container">
+                    <button type="button" id="manage-suppliers-data-modal-close-btn" onclick="manageSuppliersModalClose();">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="manage-suppliers-data-modal-error-container" id="manage-suppliers-data-modal-error-container"></div>
+            <div class="manage-suppliers-data-modal-data">
+                <form id="suppliers-data-form">
+                    <div class="form-supplier-id-container">
+                        <label for="form-supplier-id">Supplier ID</label>
+                        <p class="form-supplier-id-error" id="form-supplier-id-error"></p>
+                        <input type="number" name="form-supplier-id" id="form-supplier-id">
+                    </div>
+                    <div class="form-name-container">
+                        <label for="form-name">Name <span>*</span></label>
+                        <p class="form-name-error" id="form-name-error"></p>
+                        <input type="text" name="form-name" id="form-name">
+                    </div>
+                    <div class="form-email-container">
+                        <label for="form-email">Email <span>*</span></label>
+                        <p class="form-email-error" id="form-email-error"></p>
+                        <input type="email" email="form-email" id="form-email">
+                    </div>
+                    <div class="form-suppliers-data-update-delete-btns-container" id="form-suppliers-data-update-delete-btns-container">
+                        <div class="update-btns-inner-container">
+                            <button id="update-btn" class="update-btn" type="button" onclick="updateSuppliersData();"><i class="fa fa-edit"></i> Update</button>
+                        </div>
+                        <div class="delete-btns-inner-container">
+                            <button id="delete-btn" class="delete-btn" type="button" onclick="deleteConfirmationModalAllow();"><i class="fa fa-times"></i> Delete</button>
+                        </div>
+                    </div>
+                    <div class="form-suppliers-data-add-btn-container" id="form-suppliers-data-add-btn-container">
+                        <button id="submit-add-btn" class="submit-add-btn" type="button" onclick="addSuppliersData();">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div id="delete-confirmation-modal" class="delete-confirmation-modal">
+        <div class="delete-confirmation-modal-content">
+            <h2>Delete Supplier Data</h2>
+            <p id="delete-confimation-modal-message">Are you sure you want to delete this supplier data?</p>
+            <div class="delete-confimation-modal__btns-container">
+                <button id="delete-confirmation-modal-cancel-btn" onclick="deleteConfirmationModalClose();"><i class="fa fa-times"></i> Cancel</button>
+                <button id="delete-confirmation-modal-delete-btn" onclick="deleteSuppliersData();"><i class="fa fa-check"></i> Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var fetchSuppliersDataURL = "{% url 'fetch_suppliers_data' %}";
+        var submitSuppliersDataURL = "{% url 'manage_suppliers_data' %}";
+    </script>
+
+    <script src="{% static '/js/user-general.js' %}"></script>
+    <script src="{% static '/js/manage-suppliers.js' %}"></script>
+</body>
+
+</html>

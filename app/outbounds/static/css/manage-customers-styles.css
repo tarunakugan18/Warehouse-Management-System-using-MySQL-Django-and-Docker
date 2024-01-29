@@ -1,0 +1,394 @@
+/* Import general styles */
+@import "user-general-styles.css";
+
+#manage-customers-link {
+    padding-right: 0.5em;
+    border-left: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    background-color: #202020;
+}
+
+.manage-customers-data-header {
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.manage-customers-data-header-inner-container {
+    margin-right: 1em;
+}
+
+.all-customers-data-container {
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    padding: 1em;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 0.625em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 1vw;
+}
+
+.all-customers-data-container table {
+    border-collapse: collapse;
+    width: 100%;
+    height: auto;
+}
+
+.all-customers-data-container th,
+.all-customers-data-container td {
+    text-align: left;
+    padding: 8px;
+}
+
+.all-customers-data-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.all-customers-data-container th {
+    background-color: #adadb6;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #c63189;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 1em 1.5em;
+    border-radius: 0.625em;
+    font-size: 0.8vw;
+    font-weight: bold;
+}
+
+.edit-btn:hover,
+.update-btn:hover,
+.delete-btn:hover,
+.add-btn:hover,
+.submit-add-btn:hover,
+#previous-btn:hover,
+#next-btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.manage-customers-modal,
+.delete-confirmation-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 40px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.delete-confirmation-modal {
+    padding-top: 170px;
+}
+
+.delete-confirmation-modal {
+    z-index: 2;
+}
+
+.manage-customers-data-modal-content,
+.delete-confirmation-modal-content {
+    margin: auto;
+    padding: 1.5em;
+    background-color: #fff;
+    width: 40%;
+    height: 50%;
+    /* overflow-y: scroll; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    min-width: 25em;
+    min-height: 10em;
+    border-radius: 0.625em;
+}
+
+.delete-confirmation-modal-content {
+    width: 30%;
+    height: 30%;
+    overflow-y: hidden;
+}
+
+.delete-confirmation-modal-content h2 {
+    margin-bottom: 1em;
+}
+
+.manage-customers-data-modal-header-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.manage-customers-data-modal-header h2 {
+    font-size: 1.75vw;
+}
+
+#manage-customers-data-modal-close-btn {
+    background-color: transparent;
+    font-size: 1.5em;
+    outline: none;
+    border: none;
+}
+
+#manage-customers-data-modal-close-btn i:hover {
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.manage-customers-data-modal-error-container {
+    width: 100%;
+}
+
+.manage-customers-data-modal-error-container .error-message,
+.manage-customers-data-modal-error-container .success-message {
+    margin-bottom: 1em;
+}
+
+.manage-customers-data-modal-data,
+.customers-data-form {
+    width: 100%;
+}
+
+.form-event-data-update-delete-btns-container,
+.form-event-data-add-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 2em;
+}
+
+.update-btns-inner-container {
+    margin-right: 0.5em;
+}
+
+.update-btn,
+#delete-confirmation-modal-cancel-btn {
+    background-color: #8b67d3;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 1em 2em;
+    border-radius: 0.625em;
+    font-size: 1.05vw;
+    font-weight: bold;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.delete-btn,
+#delete-confirmation-modal-delete-btn {
+    background-color: #f44336;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 1em 2em;
+    border-radius: 0.625em;
+    font-size: 1.05vw;
+    font-weight: bold;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+#delete-confirmation-modal-delete-btn:hover,
+#delete-confirmation-modal-cancel-btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.add-btn {
+    background-color: #733299;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 1em 2em;
+    border-radius: 0.625em;
+    font-size: 1.05vw;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.submit-add-btn {
+    outline: none;
+    border: none;
+    padding: 1em 2em;
+    border-radius: 0.625em;
+    font-size: 1.05vw;
+    font-weight: bold;
+    background-color: #47a330;
+    color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.form-customer-id-error,
+.form-name-error,
+.form-email-error {
+    display: inline-block;
+    color: red;
+    font-size: 0.85vw;
+}
+
+.form-customer-id-container input,
+.form-name-container input,
+.form-email-container input {
+    display: block;
+    border: none;
+    border-radius: 0.625em;
+    border: 2px solid grey;
+    box-sizing: border-box;
+    padding: 0.55em 0.85em;
+    width: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-size: 1.05vw;
+}
+
+/* .form-remarks-container textarea {
+    height: 7.5em;
+    resize: vertical;
+} */
+
+.form-customer-id-container input:focus,
+.form-name-container input:focus,
+.form-email-container input:focus {
+    border: none;
+    outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--secondary-color);
+}
+
+.form-customer-id-container,
+.form-name-container,
+.form-email-container {
+    margin-bottom: 0.75em;
+}
+
+.form-customer-id-container input,
+.form-name-container input,
+.form-email-container input {
+    margin-top: 0.25em;
+}
+
+.form-customer-id-container span,
+.form-name-container span,
+.form-email-container span {
+    color: red;
+}
+
+.form-customer-id-container input:disabled,
+.form-name-container input:disabled,
+.form-email-container input:disabled {
+    background-color: #e8e8e8;
+}
+
+.manage_user_data_modal_content {
+    scroll-behavior: smooth;
+}
+
+#delete-confimation-modal-message {
+    margin-bottom: 1em;
+}
+
+.delete-confirmation-modal h2 {
+    font-size: 1.5em;
+}
+
+.delete-confimation-modal__btns-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#delete-confirmation-modal-cancel-btn {
+    margin-right: 0.5em;
+}
+
+#form-event-start,
+#form-event-end {
+    font-family: var(--ff-body);
+}
+
+#inbound-table>thead>tr>th:not(:last-child):hover {
+    cursor: pointer;
+    background-color: #7a7a81;
+}
+
+#inbound-table>thead>tr>th>i {
+    font-size: 0.85rem;
+}
+
+.manage-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1em;
+}
+
+#previous-btn {
+    margin-right: 1em;
+}
+
+.table-filter-input-container {
+    margin-bottom: 1.5em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#table-filter-input {
+    border: none;
+    border-radius: 0.625em;
+    border: 2px solid grey;
+    box-sizing: border-box;
+    padding: 0.55em 0.85em;
+    width: 20%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 1.05vw;
+    margin-left: 1em;
+}
+
+#table-filter-input:focus {
+    border: none;
+    outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--secondary-color);
+}
+
+#previous-btn {
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 1em 2em;
+    border-radius: 0.625em;
+    font-size: 1vw;
+    font-weight: bold;
+    background: #8b8b8b;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#next-btn {
+    outline: none;
+    border: none;
+    padding: 1em 2em;
+    border-radius: 0.625em;
+    font-size: 1vw;
+    font-weight: bold;
+    background-color: #1ad6d4;
+    color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.success-message {
+    background-color: #ddffdd;
+    border-left: 6px solid #04AA6D;
+}
+
+.error-message {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+}

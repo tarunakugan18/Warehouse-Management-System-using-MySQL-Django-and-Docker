@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'"> -->
+    <link rel="stylesheet" href="{% static '/css/index-styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static '/img/company-logo.ico' %}">
+    <title>Warehouse Management System</title>
+</head>
+
+<body onload="loadPage();">
+    <section class="whole-section">
+        <div class="whole-section__background">
+            <div class="login-container">
+                <div class="login-container__outside-container">
+                    <div class="login-container-headers">
+                        <div class="login-container__header-container">
+                            <h2>Warehouse Management System Login</h2>
+                        </div>
+                        <div class="login-container-headers__img">
+                            <img src="{% static 'img/logo.jpg' %}" alt="Logo">
+                        </div>
+                    </div>
+                    <div class="login-container__input-form">
+                        <form action="{% url 'home' %}" method="post" id="login-form" name="login-form">
+                            {% csrf_token %}
+                            <div class="input-form-user-id">
+                                <div class="user-id-container">
+                                    <p><label for="user-id">User ID <p class="mandatory-field-symbol">*</p></label></p>
+                                    <p id="user-id-error"></p>
+                                </div>
+                                <input type="number" name="user-id" id="user-id" placeholder="Enter User ID" oninput="validateUserID();">
+                            </div>
+                            <br>
+                            <div class="input-form-user-password">
+                                <div class="user-password-container">
+                                    <p><label for="user-password">User Password <p class="mandatory-field-symbol">*</p></label></p>
+                                    <p id="user-password-error"></p>
+                                </div>
+                                <input type="password" name="user-password" id="user-password" placeholder="Enter User Password" onchange="validateUserPassword();">
+                            </div>
+                            <br>
+                            <div class="input-form-user-type">
+                                <div class="user-type-container">
+                                    <p><label for="user-type">User Type <p class="mandatory-field-symbol">*</p></label></p>
+                                    <p id="user-type-error"></p>
+                                </div>
+                                <select name="user-type" id="user-type" onchange="validateUserType();">
+                                    <option value="Warehouse Manager">Warehouse Manager</option>
+                                    <option value="Operator">Operator</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="input-form-button">
+                                <button type="submit" name="submit-btn" id="submit-btn" disabled>Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% if messages %}
+                <div class="error-message" id="error-message">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    <script src="{% static '/js/index.js' %}"></script>
+</body>
+
+</html>

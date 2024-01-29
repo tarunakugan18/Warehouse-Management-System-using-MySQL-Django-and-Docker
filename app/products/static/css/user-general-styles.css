@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    --ff-title: "Montserrat", sans-serif;
+    --ff-body: "Roboto", sans-serif;
+    --primary-color: #3023ae;
+    --secondary-color: #f09;
+    --tertiary-color: #9F2042;
+    --quartenary-color: #F5F5F5;
+    --quinary-color: #F8E5EE;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ff-body);
+    background: rgb(238, 244, 253);
+    font-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ff-title);
+}
+
+/* Popup CSS */
+.session-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 110px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.session-modal-content {
+    margin: auto;
+    padding: 1.5em;
+    background-color: #fff;
+    width: 40%;
+    height: 40%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    min-width: 25em;
+    min-height: 10em;
+    border-radius: 0.625em;
+}
+
+.session-modal-content__btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#session-modal-allow-btn {
+    padding: 1em 3em;
+    border-radius: 0.625em;
+    border: none;
+    outline: none;
+    background-color: #a4508b;
+    background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+    color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-size: 1vw;
+}
+
+#session-modal-allow-btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.session-modal-content h2,
+#session-modal-content__countdown-timer {
+    margin-bottom: 1em;
+}
+
+.session-modal-content h2 {
+    font-size: 2vw;
+}
+
+.session-modal-content p {
+    font-size: 1.1vw;
+}
+
+/* Navigation bar CSS */
+.navigation-bar {
+    background-color: #007bff;
+    padding: 1.2em 1.75em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    transition: 0.3s;
+}
+
+.hamburger-icon {
+    order: 1;
+}
+
+.logo {
+    order: 2;
+}
+
+.header {
+    order: 3;
+}
+
+.hamburger-icon i {
+    color: #fff
+}
+
+.hamburger-icon i:hover {
+    cursor: pointer;
+}
+
+.logo img {
+    width: 3em;
+}
+
+.hamburger-icon {
+    margin-right: 1em;
+}
+
+.hamburger-icon i {
+    font-size: 1.4em;
+}
+
+.logo {
+    margin-right: 0.2em;
+}
+
+.header a {
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.header a,
+.header h2 {
+    color: white;
+}
+
+.side-navigation-bar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    transition: 0.5s;
+    z-index: 1;
+    overflow-x: hidden;
+    background-color: #a5c4e0;
+    top: 0;
+    left: 0;
+}
+
+.side-navigation-bar a {
+    text-decoration: none;
+    padding: 1.2em 2em;
+    display: block;
+    color: #000;
+    font-size: 1em;
+}
+
+.side-navigation-bar a:hover {
+    color: #000;
+}
+
+.side-navigation-bar>a>i {
+    margin-right: 0.5em;
+}
+
+.main-content__entire-section {
+    padding: 1.5em 1.75em;
+}
+
+#navigation-bar-active {
+    background-color: #000;
+    border-left: 5px solid #fff;
+    color: #fff;
+}
+
+.user-data-outer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.75em 2.9em;
+}
+
+.user-photo img {
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+}
+
+.user-photo {
+    margin-right: 1em;
+}
+
+.user-name {
+    margin-bottom: 0.2em;
+}
+
+.user-name p {
+    color: black;
+    font-size: 0.9rem;
+}
+
+.user-online-status {
+    border-radius: 50%;
+    background-color: #2ade2a;
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+}
+
+.user-online-status-container {
+    font-size: 0.8rem;
+}
+
+.user-online {
+    color: black;
+    display: inline-block;
+}
+
+.success-message {
+    background-color: #ddffdd;
+    border-left: 6px solid #04AA6D;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.error-message {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+
+/* For Tiny Screens */
+@media screen and (max-width: 80rem) {
+
+    .navigation-bar {
+        justify-content: end;
+    }
+
+    .hamburger-icon {
+        order: 3;
+        margin-right: 0;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .header {
+        order: 2;
+        flex: calc(100% / 3);
+    }
+
+    .side-navigation-bar {
+        height: 0;
+        width: 100%;
+        padding-top: 0;
+        position: unset;
+    }
+
+    .side-navigation-bar a {
+        padding: 1.4em 2em;
+    }
+
+    .user-data-outer-container {
+        justify-content: unset;
+    }
+
+    .user-photo {
+        margin-right: 1em;
+    }
+}
